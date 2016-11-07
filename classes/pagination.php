@@ -4,7 +4,7 @@
  * @author     Serpong
  */
 
-class pagination {
+class Pagination {
 
     //user inputs
     /*private $config = array(
@@ -43,11 +43,11 @@ class pagination {
     public function __construct($limit, $num_rows, $current_page, $link, $len = 2)
     {
         $this->limit = $limit;
+        $this->num_rows = $num_rows;
+        $this->current_page = $current_page;
+        $this->link = $link;
+        $this->len = $len;
         $this->setup();
-    }
-
-    public function test(){
-        echo $limit;
     }
 
     public function setup(){
@@ -77,10 +77,10 @@ class pagination {
     }
 
     public function print_html(){
-        echo $result;
+        echo $this->result;
     }
-    public function return_html(){
-        return $result;
+    public function get_html(){
+        return $this->result;
     }
 
 
