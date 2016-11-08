@@ -1,5 +1,8 @@
 # PAGINATION
 
+usage
+------- 
+
 	<?php
 		$pagination = new Pagination($limit, $num_rows, $current_page, $link, $len);
 		$pagination_html = $pagination->get_html();
