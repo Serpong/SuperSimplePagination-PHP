@@ -1,5 +1,11 @@
 # PAGINATION
 
-	function paging($limit, $numRows, $n, $link, $len = 2)
+	<?php
+		$pagination = new Pagination($limit, $num_rows, $current_page, $link, $len);
+		$pagination_html = $pagination->get_html();
+	?>
+	<div class="pagination">
+		<?=$pagination_html?>
+	</div>
 
-[블로그](blog.serpongs.net)
+[블로그](http://blog.serpongs.net)

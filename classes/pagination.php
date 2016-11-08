@@ -65,15 +65,27 @@ class Pagination {
         if(($this->current_page+$this->len) - $this->end >= 1 && $this->page_count > 5)
             $this->start-=($this->current_page+$this->len) - $this->end;
 
-        if($this->start != 1)
-            $this->result .= "<a href='#'>&lt;</a>";
-        
-        for ($this->i = $this->start; $this->i <= $this->end; $this->i++) {
-            $this->result .= "<a " . ($this->i == $this->current_page?'class="active"':"") . 'href="' . sprintf($this->link, ($this->i));
-            $this->result .= '">' . $this->i . '</a>';
+
+
+
+        if($this->start != 1){ // left arrow
+            $left_arrow_page = $this->current_page - 5;
+            if($left_arrow_page < 1)
+                $left_arrow_page = 1;
+            $this->result .= "<a href='" . sprintf($this->link, $left_arrow_page) . "'>&lt;</a>";
         }
-        if($this->i-1 != $this->page_count)
-            $this->result .= "<a href='#'>&gt;</a>";
+        
+        for ($i = $this->start; $i <= $this->end; $i++) {
+            $this->result .= "<a " . ($i == $this->current_page?'class="active"':"") . 'href="' . sprintf($this->link, ($i));
+            $this->result .= '">' . $i . '</a>';
+        }
+
+        if($i-1 != $this->page_count){ // right arrow
+            $right_arrow_page = $this->current_page + 5;
+            if($right_arrow_page > $this->page_count)
+                $right_arrow_page = $this->page_count;
+            $this->result .= "<a href='" . sprintf($this->link, $right_arrow_page) . "'>&gt;</a>";
+        }
     }
 
     public function print_html(){
